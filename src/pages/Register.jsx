@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-import AuthLayout from "../components/AuthLayout";
+import AuthLayout from "../layouts/AuthLayout";
 import InputField from "../components/InputField";
 import PasswordField from "../components/PasswordField";
 import Button from "../components/Button";
@@ -117,7 +117,7 @@ const Register = () => {
           onChange={handleChange}
         />
 
-        <Button text="Register" type="submit" />
+        <Button text="Register" type="submit" fullWidth/>
 
         {error && (
           <p className="mt-3 text-sm text-red-500">

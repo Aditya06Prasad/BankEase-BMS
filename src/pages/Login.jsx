@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Button from "../components/Button";
 import InputField from "../components/InputField.jsx";
 import PasswordField from "../components/PasswordField.jsx";
-import AuthLayout from "../components/AuthLayout.jsx";
+import AuthLayout from "../layouts/AuthLayout.jsx";
 
 const Login = () => {
   const handleLogin = (e) => {e.preventDefault()}
@@ -61,7 +61,9 @@ const Login = () => {
           </Link>
         </div>
 
-        <Button text="Login" type="submit" />
+        <div className="flex justify-center mt-3 mb-4">
+          <Button text="Login" type="submit" />
+        </div>
 
         <div className="flex items-center my-6">
           <div className="flex-1 border-t border-slate-300"></div>
