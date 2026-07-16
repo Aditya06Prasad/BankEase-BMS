@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Navbar from "../layouts/Navbar";
-import Sidebar from "../layouts/Sidebar";
+import MainLayout from "../layouts/MainLayout";
 import InputField from "../components/InputField";
 
 const Transactions = () => {
@@ -69,50 +68,45 @@ const Transactions = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Navbar />
+    <MainLayout>
+      <div className="min-w-0 p-8">
+        <h1 className="text-3xl font-bold text-gray-800">Transactions</h1>
 
-      <div className="flex">
-        <Sidebar />
+        <p className="mt-2 text-gray-600">
+          View and track your account transactions.
+        </p>
 
-        <main className="min-w-0 flex-1 p-8">
-          <h1 className="text-3xl font-bold text-gray-800">Transactions</h1>
-
-          <p className="mt-2 text-gray-600">
-            View and track your account transactions.
-          </p>
-
-          <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="w-full md:max-w-sm">
-              <InputField
-                id="search"
-                label="Search Transaction"
-                placeholder="Search by transaction name..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-
-            <div className="w-full md:w-52">
-              <label className="mb-2 block text-sm font-medium text-gray-700">
-                Filter
-              </label>
-
-              <select
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none"
-              >
-                <option value="All">All</option>
-                <option value="Credit">Credit</option>
-                <option value="Debit">Debit</option>
-              </select>
-            </div>
+        <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="w-full md:max-w-sm">
+            <InputField
+              id="search"
+              label="Search Transaction"
+              placeholder="Search by transaction name..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
+          <div className="w-full md:w-52">
+            <label className="mb-2 block text-sm font-medium text-gray-700">
+              Filter
+            </label>
+
+            <select
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none"
+            >
+              <option value="All">All</option>
+              <option value="Credit">Credit</option>
+              <option value="Debit">Debit</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="mt-6 overflow-hidden rounded-xl bg-white shadow-sm">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
                 <thead className="border-b border-gray-200 bg-gray-50">
                   <tr>
                     <th className="px-6 py-4 text-sm font-semibold text-gray-600">
@@ -199,10 +193,9 @@ const Transactions = () => {
               </table>
             </div>
           </div>
-        </main>
-      </div>
-    </div>
-  );
-};
+        </div>
+      </MainLayout>
+    );
+  };
 
 export default Transactions;

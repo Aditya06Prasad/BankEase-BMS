@@ -3,10 +3,14 @@ import Sidebar from '../layouts/Sidebar';
 
 const MainLayout = ({ children }) => {
   return (
-    <div>
+    <div className="min-h-screen bg-slate-100">
       <Navbar />
-      <Sidebar />
-      <main>{children}</main>
+
+      <div className="flex">
+        <Sidebar />
+
+        <main className="flex-1">{children}</main>
+      </div>
     </div>
   );
 };

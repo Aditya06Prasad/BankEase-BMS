@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import MainLayout from "../layouts/MainLayout";
 import PinModal from "../components/PinModal";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
@@ -58,61 +59,63 @@ const Transfer = () => {
     });
   };
   return (
-    <main className="p-6">
-      <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6">
-        <h1 className="text-3xl font-bold mb-2">Transfer Money</h1>
+    <MainLayout>
+      <div className="p-6">
+        <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6">
+          <h1 className="text-3xl font-bold mb-2">Transfer Money</h1>
 
-        <p className="text-gray-500 mb-6">
-          Send money securely to another bank account.
-        </p>
+          <p className="text-gray-500 mb-6">
+            Send money securely to another bank account.
+          </p>
 
-        <form className="space-y-5" onSubmit={handleSubmit}>
-          <InputField
-            label="Recipient Name"
-            id="recipientName"
-            placeholder="Enter recipient name"
-            value={formData.recipientName}
-            onChange={handleChange}
+          <form className="space-y-5" onSubmit={handleSubmit}>
+            <InputField
+              label="Recipient Name"
+              id="recipientName"
+              placeholder="Enter recipient name"
+              value={formData.recipientName}
+              onChange={handleChange}
+            />
+
+            <InputField
+              label="Account Number"
+              id="accNum"
+              type="number"
+              placeholder="Enter Account Number"
+              value={formData.accNum}
+              onChange={handleChange}
+            />
+
+            <InputField
+              label="IFSC Code"
+              id="ifscCode"
+              placeholder="Enter IFSC Code"
+              value={formData.ifscCode}
+              onChange={handleChange}
+            />
+
+            <InputField
+              label="Amount"
+              id="amount"
+              type="number"
+              placeholder="Enter Amount"
+              value={formData.amount}
+              onChange={handleChange}
+            />
+            {success && <p className="text-green-600 text-sm">{success}</p>}
+            {error && <p className="text-red-600 text-sm">{error}</p>}
+            <Button text="Transfer Money" type="submit" fullWidth />
+          </form>
+        </div>
+
+        {showPinModal && (
+          <PinModal
+            onClose={() => setShowPinModal(false)}
+            onConfirm={handleTransferSuccess}
           />
-
-          <InputField
-            label="Account Number"
-            id="accNum"
-            type="number"
-            placeholder="Enter Account Number"
-            value={formData.accNum}
-            onChange={handleChange}
-          />
-
-          <InputField
-            label="IFSC Code"
-            id="ifscCode"
-            placeholder="Enter IFSC Code"
-            value={formData.ifscCode}
-            onChange={handleChange}
-          />
-
-          <InputField
-            label="Amount"
-            id="amount"
-            type="number"
-            placeholder="Enter Amount"
-            value={formData.amount}
-            onChange={handleChange}
-          />
-          {success && <p className="text-green-600 text-sm">{success}</p>}
-          {error && <p className="text-red-600 text-sm">{error}</p>}
-          <Button text="Transfer Money" type="submit" fullWidth />
-        </form>
+        )}
       </div>
-
-      {showPinModal && (
-        <PinModal
-          onClose={() => setShowPinModal(false)}
-          onConfirm={handleTransferSuccess}
-        />
-      )}
-    </main>
+    </MainLayout>
   );
 };
 

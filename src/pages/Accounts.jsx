@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import Navbar from "../layouts/Navbar";
-import Sidebar from "../layouts/Sidebar";
+import MainLayout from "../layouts/MainLayout";
 
 const Accounts = () => {
   const accounts = [
@@ -31,27 +30,22 @@ const Accounts = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Navbar />
+    <MainLayout>
+      <div className="p-8">
+        <h1 className="text-3xl font-bold text-gray-800">
+          My Accounts
+        </h1>
 
-      <div className="flex">
-        <Sidebar />
+        <p className="mt-2 text-gray-600">
+          View and manage your bank accounts.
+        </p>
 
-        <main className="flex-1 p-8">
-          <h1 className="text-3xl font-bold text-gray-800">
-            My Accounts
-          </h1>
-
-          <p className="mt-2 text-gray-600">
-            View and manage your bank accounts.
-          </p>
-
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {accounts.map((account) => (
-              <div
-                key={account.id}
-                className="rounded-xl bg-white p-6 shadow-sm"
-              >
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          {accounts.map((account) => (
+            <div
+              key={account.id}
+              className="rounded-xl bg-white p-6 shadow-sm"
+            >
                 {/* Account Header */}
 
                 <div className="flex items-start justify-between">
@@ -158,10 +152,9 @@ const Accounts = () => {
               </div>
             ))}
           </div>
-        </main>
-      </div>
-    </div>
-  );
-};
+        </div>
+      </MainLayout>
+    );
+  };
 
 export default Accounts;

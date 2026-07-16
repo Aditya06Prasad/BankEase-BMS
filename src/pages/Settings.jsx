@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Navbar from "../layouts/Navbar";
-import Sidebar from "../layouts/Sidebar";
+import MainLayout from "../layouts/MainLayout";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 
@@ -99,27 +98,22 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Navbar />
+    <MainLayout>
+      <div className="min-w-0 p-8">
+        <h1 className="text-3xl font-bold text-gray-800">
+          Settings
+        </h1>
 
-      <div className="flex">
-        <Sidebar />
+        <p className="mt-2 text-gray-600">
+          Manage your profile and account preferences.
+        </p>
 
-        <main className="min-w-0 flex-1 p-8">
-          <h1 className="text-3xl font-bold text-gray-800">
-            Settings
-          </h1>
+        {/* Profile Settings Form */}
 
-          <p className="mt-2 text-gray-600">
-            Manage your profile and account preferences.
-          </p>
-
-          {/* Profile Settings Form */}
-
-          <form
-            onSubmit={handleSubmit}
-            className="mt-8 max-w-3xl rounded-xl bg-white p-6 shadow-sm"
-          >
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 max-w-3xl rounded-xl bg-white p-6 shadow-sm"
+        >
             <div className="border-b border-gray-200 pb-4">
               <h2 className="text-xl font-semibold text-gray-800">
                 Profile Information
@@ -212,73 +206,72 @@ const Settings = () => {
             </div>
           </form>
 
-          {/* Security Settings Form */}
+        {/* Security Settings Form */}
 
-          <form
-            onSubmit={handlePassSubmit}
-            className="mt-8 max-w-3xl rounded-xl bg-white p-6 shadow-sm"
-          >
-            <div className="border-b border-gray-200 pb-4">
-              <h2 className="text-xl font-semibold text-gray-800">
-                Security Settings
-              </h2>
+        <form
+          onSubmit={handlePassSubmit}
+          className="mt-8 max-w-3xl rounded-xl bg-white p-6 shadow-sm"
+        >
+          <div className="border-b border-gray-200 pb-4">
+            <h2 className="text-xl font-semibold text-gray-800">
+              Security Settings
+            </h2>
 
-              <p className="mt-1 text-sm text-gray-500">
-                Update your account password.
-              </p>
-            </div>
+            <p className="mt-1 text-sm text-gray-500">
+              Update your account password.
+            </p>
+          </div>
 
-            <div className="mt-6 grid gap-5 md:grid-cols-2">
-              <InputField
-                id="currentPass"
-                label="Current Password"
-                type="password"
-                placeholder="Enter your current password"
-                value={password.currentPass}
-                onChange={handlePassChange}
-              />
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            <InputField
+              id="currentPass"
+              label="Current Password"
+              type="password"
+              placeholder="Enter your current password"
+              value={password.currentPass}
+              onChange={handlePassChange}
+            />
 
-              <InputField
-                id="newPass"
-                label="New Password"
-                type="password"
-                placeholder="Enter a new password"
-                value={password.newPass}
-                onChange={handlePassChange}
-              />
+            <InputField
+              id="newPass"
+              label="New Password"
+              type="password"
+              placeholder="Enter a new password"
+              value={password.newPass}
+              onChange={handlePassChange}
+            />
 
-              <InputField
-                id="confirmPass"
-                label="Confirm New Password"
-                type="password"
-                placeholder="Confirm your new password"
-                value={password.confirmPass}
-                onChange={handlePassChange}
-              />
-            </div>
+            <InputField
+              id="confirmPass"
+              label="Confirm New Password"
+              type="password"
+              placeholder="Confirm your new password"
+              value={password.confirmPass}
+              onChange={handlePassChange}
+            />
+          </div>
 
-            {passError && (
-              <p className="mt-5 rounded-lg bg-red-100 px-4 py-3 text-red-700">
-                {passError}
-              </p>
-            )}
+          {passError && (
+            <p className="mt-5 rounded-lg bg-red-100 px-4 py-3 text-red-700">
+              {passError}
+            </p>
+          )}
 
-            {passSuccess && (
-              <p className="mt-5 rounded-lg bg-green-100 px-4 py-3 text-green-700">
-                {passSuccess}
-              </p>
-            )}
+          {passSuccess && (
+            <p className="mt-5 rounded-lg bg-green-100 px-4 py-3 text-green-700">
+              {passSuccess}
+            </p>
+          )}
 
-            <div className="mt-6 flex justify-end">
-              <Button
-                type="submit"
-                text="Update Password"
-              />
-            </div>
-          </form>
-        </main>
+          <div className="mt-6 flex justify-end">
+            <Button
+              type="submit"
+              text="Update Password"
+            />
+          </div>
+        </form>
       </div>
-    </div>
+    </MainLayout>
   );
 };
 
