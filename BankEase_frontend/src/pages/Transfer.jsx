@@ -5,7 +5,7 @@ import PinModal from "../components/PinModal";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 
-const Transfer = () => {
+const Transfer = ({ setIsAuthenticated }) => {
   const [showPinModal, setShowPinModal] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -59,7 +59,7 @@ const Transfer = () => {
     });
   };
   return (
-    <MainLayout>
+    <MainLayout setIsAuthenticated={setIsAuthenticated}>
       <div className="p-6">
         <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6">
           <h1 className="text-3xl font-bold mb-2">Transfer Money</h1>

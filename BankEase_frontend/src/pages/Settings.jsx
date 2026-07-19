@@ -3,7 +3,7 @@ import MainLayout from "../layouts/MainLayout";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
 
-const Settings = () => {
+const Settings = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
     fullName: "Aditya Chandravanshi",
     email: "Prasadaditya553@gmail.com",
@@ -98,7 +98,7 @@ const Settings = () => {
   };
 
   return (
-    <MainLayout>
+    <MainLayout setIsAuthenticated={setIsAuthenticated}>
       <div className="min-w-0 p-8">
         <h1 className="text-3xl font-bold text-gray-800">
           Settings

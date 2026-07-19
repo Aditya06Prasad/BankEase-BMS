@@ -1,13 +1,21 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Button from "../components/Button";
 import InputField from "../components/InputField.jsx";
 import PasswordField from "../components/PasswordField.jsx";
 import AuthLayout from "../layouts/AuthLayout.jsx";
 
-const Login = () => {
-  const handleLogin = (e) => {e.preventDefault()}
+const Login = ({ setIsAuthenticated }) => {
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log("Login clicked");
+    setIsAuthenticated(true);
+    navigate("/dashboard");
+  };
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -25,7 +33,7 @@ const Login = () => {
           id="email"
           placeholder="Enter your Email"
           value={email}
-          onChange={(e)=>setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <PasswordField
@@ -33,8 +41,7 @@ const Login = () => {
           id="password"
           placeholder="Enter your Password"
           value={password}
-          onChange={(e)=> setPassword(e.target.value)}
-
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <div className="flex items-center justify-between mt-3 mb-5">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import MainLayout from "../layouts/MainLayout";
 import InputField from "../components/InputField";
 
-const Transactions = () => {
+const Transactions = ({ setIsAuthenticated }) => {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
 
@@ -68,7 +68,7 @@ const Transactions = () => {
   });
 
   return (
-    <MainLayout>
+    <MainLayout setIsAuthenticated={setIsAuthenticated}>
       <div className="min-w-0 p-8">
         <h1 className="text-3xl font-bold text-gray-800">Transactions</h1>
 

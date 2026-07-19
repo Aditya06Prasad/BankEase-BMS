@@ -10,18 +10,21 @@ import Accounts from "../pages/Accounts";
 import Transactions from "../pages/Transactions";
 import Settings from "../pages/Settings";
 
-const AppRoutes = ({ isAuthenticated }) => {
+const AppRoutes = ({ isAuthenticated, setIsAuthenticated }) => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/login" replace />} />
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/login"
+        element={<Login setIsAuthenticated={setIsAuthenticated} />}
+      />
       <Route path="/register" element={<Register />} />
 
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <Dashboard />
+            <Dashboard setIsAuthenticated={setIsAuthenticated} />
           </ProtectedRoute>
         }
       />
@@ -29,7 +32,7 @@ const AppRoutes = ({ isAuthenticated }) => {
         path="/accounts"
         element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <Accounts />
+            <Accounts setIsAuthenticated={setIsAuthenticated} />
           </ProtectedRoute>
         }
       />
@@ -37,7 +40,7 @@ const AppRoutes = ({ isAuthenticated }) => {
         path="/transfer"
         element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <Transfer />
+            <Transfer setIsAuthenticated={setIsAuthenticated} />
           </ProtectedRoute>
         }
       />
@@ -45,7 +48,7 @@ const AppRoutes = ({ isAuthenticated }) => {
         path="/transactions"
         element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <Transactions />
+            <Transactions setIsAuthenticated={setIsAuthenticated} />
           </ProtectedRoute>
         }
       />
@@ -53,7 +56,7 @@ const AppRoutes = ({ isAuthenticated }) => {
         path="/settings"
         element={
           <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <Settings />
+            <Settings setIsAuthenticated={setIsAuthenticated} />
           </ProtectedRoute>
         }
       />

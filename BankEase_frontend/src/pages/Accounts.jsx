@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 
-const Accounts = () => {
+const Accounts = ({ setIsAuthenticated }) => {
   const accounts = [
     {
       id: 1,
@@ -30,7 +30,7 @@ const Accounts = () => {
   ];
 
   return (
-    <MainLayout>
+    <MainLayout setIsAuthenticated={setIsAuthenticated}>
       <div className="p-8">
         <h1 className="text-3xl font-bold text-gray-800">
           My Accounts
