@@ -13,10 +13,12 @@ public class UserService {
 
     private final UserRepo userdata;
     private final PasswordEncoder passEncode;
+    private final JwtService jwtService;
 
-    public UserService(UserRepo userdata, PasswordEncoder passEncode) {
+    public UserService(UserRepo userdata, PasswordEncoder passEncode, JwtService jwtService) {
         this.userdata = userdata;
         this.passEncode = passEncode;
+        this.jwtService = jwtService;
     }
 
     public User registerUser(UserRequest userdata) {
@@ -45,11 +47,14 @@ public class UserService {
             return null;
         }
 
+        String token = jwtService.generateToken(user);
+
         LoginResponse response = new LoginResponse(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
-                "Login Successfully"
+                "Login Successfully",
+                token
         );
 
         return response;

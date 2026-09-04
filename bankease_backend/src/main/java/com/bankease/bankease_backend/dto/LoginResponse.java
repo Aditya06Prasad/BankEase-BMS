@@ -6,12 +6,14 @@ public class LoginResponse {
     private String name;
     private String email;
     private String message;
+    private String token;
 
-    public LoginResponse(Long id, String name, String email, String message){
+    public LoginResponse(Long id, String name, String email, String message, String token){
         this.id = id;
         this.name = name;
         this.email = email;
         this.message = message;
+        this.token = token;
     }
 
     public Long getId(){
@@ -25,5 +27,8 @@ public class LoginResponse {
     }
     public String getMessage(){
         return message;
+    }
+    public String getToken(){
+        return token;
     }
 }
